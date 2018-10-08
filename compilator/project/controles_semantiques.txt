@@ -1,0 +1,36 @@
+-----
+Ce fichier liste tous les contrôles sémantiques a effectuer dans le programme
+-----
+
+GENERAL
+- Un programme doit toujours contenir une fonction main qui est le point d'entrée.
+
+IDENTIFICATION
+- L'appel à un identificateur de façon généarle (dans des IF, dans des whiles, dans des affectations...) se traduit par une vérification de la présence de l'identificateur
+dans la TDS courante ou une TDS supérieur en suivant le piles des régions ouvertes.
+
+DECLARATION / AFFECTATION :
+L_VALUE = R_VALUE;
+
+- Lors d'une affectation, le type de droite et le type de gauche doivent être les mêmes si la valeur de gauche existe déjà. (Ce n'est pas une déclaration)
+- Lors d'une affectation, la variable affectée L_VALUE doit être mutable pour être réaffectée.
+
+- Lors de la déclaration d'une fonction, celle-ci ne doit pas déjà être déclarée.
+- Le retour du bloc d'une déclaration de fonction doit être effectivement le même que celui précisé dans le retour : fn() -> i33 {} le bloc {} doit retourner un type i32.
+
+APPEL IF :
+- Le predicat utilisé dans un IF doit être de type booléen.
+
+APPEL WHILE :
+- Le prédicat utilisé dans un WHILE doit être de type booléan.
+
+PLUS/MOINS/MULT/DIV/<=/</>=/==/!=
+- Dans le cadre de l'une de ces opérations, les opérandes gauche et droite doivent être de type i32.
+
+&&/||
+- Dans le cadre de l'un de ces tests, l'opérande gauche et droite doivent être des booléens.
+
+APPEL DE FONCTION
+- L'appel d'une fonction doit se faire sur une fonction qui a déjà été déclarée
+- Les arguments utilisés dans la fonction doivent être de même type que ceux précisés dans la signature de la fonction
+- Le nombre d'argument utilisés dans l'appel doit être le même que celui de la signature.

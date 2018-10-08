@@ -1,0 +1,31 @@
+struct vecteur
+{
+    x: i32,
+    y: i32
+}
+
+struct data
+{
+    v: vecteur,
+    to_add: bool
+}
+
+struct data2
+{
+  d: data
+}
+
+fn main(){
+    let x= data{v:vecteur{x:1, y:2}, to_add:false};
+    let x.to_add = true;
+    let x.v = vecteur{x:3, y:4};
+    let x.v = vecteur{x:5, y:6};
+    let d2 = data2{d:x};
+    let a = 32;
+    let d2.d.v = vecteur{x:5, y:6};
+    /* let d2.d.v = v; fonctionne pas */
+    let d2.d = data{v:vecteur{x:7, y:8}, to_add:false};
+    print!(d2.d.v.x);
+    print!(d2.d.v.y);
+    print!(a);
+}

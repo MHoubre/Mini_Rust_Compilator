@@ -1,0 +1,48 @@
+1) -> let var sans rien après? (normalement pas le droit cf rust?)
+2) -> let mut a= 2 puis let a= a+1 => pourquoi let a 2eme call???
+3) -> vec: minuscule ou majuscule?
+4) -> surcharge pour fonction autorisee?
+5) -> + si let mut a= 2, possibilité de faire let a= Vec![...]? (i.e. pas de typage des vars)
+
+
+Notes importantes pour suite:
+"a la fin d'un bloc, les ressources doivent etre liberees dans l'ordre inverse de leur declaration" -> utilité?
+!! test sémantique: programme rust doit tjrs comporter une fonction main
+!! la valeur retournee par le bloc d'une fonction doit correspondre avec son type de retour
+
+
+ {
+
+ 	let a = 1;
+
+ 	{
+ 		let a = 1;
+ 	}
+
+ }
+ => juste: 2 tds avec chacune a dedans
+
+  {
+
+ 	let a = 1;
+
+ 	{
+ 		let b = a+1;
+ 	}
+
+ }
+ => juste: 2 tds, on cherche a dans bloc du dessus
+
+   {
+
+ 	let a = 1;
+
+ 	{
+ 		let mut b = a+1;
+ 		let b = Vect![1,2]; => faux
+ 	}
+
+ }
+ => juste: 2 tds, on cherche a dans bloc du dessus
+
+ La portée d'un identificateur de variable ou de paramètre formel est constituée de l'intégralité de la région où figure sa déclaration, moins les régions où le même identificateur est déclaré.

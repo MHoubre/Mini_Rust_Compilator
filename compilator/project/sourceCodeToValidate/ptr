@@ -1,0 +1,31 @@
+struct vecteur{
+    x: i32,
+    y: i32
+}
+
+struct data{
+    v : vecteur,
+    to_add : bool
+}
+
+
+fn test(a : & i32, d : & data){
+    let *d = data{v:vecteur{x:*a-5 , y:*a+5}, to_add:*d.to_add};
+}
+
+
+fn main(){
+    let a = data{v:vecteur{x:1, y:1}, to_add:true};
+    let a.v = vecteur{x:5, y:12}; /* opération non possible avec les pointeurs de structure */
+    let c = 6;
+    let b = &a;
+    print!(c); /* +6 */
+    print!(a.v.x); /* +5 */
+    print!(a.v.y); /* +12 */
+    test(&c, b); /* x = 1, y = 11, to_add = true*/
+    print!(c); /* +6 */
+    print!(*b.v.x); /* +1 */
+    print!(*b.v.y); /* +11 */
+    let *b.v.x = c * *b.v.x * *b.v.y ; /* 6 * 1 * 11 */
+    print!(a.v.x); /* +66 */
+}
